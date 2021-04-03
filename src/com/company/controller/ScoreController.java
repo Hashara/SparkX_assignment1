@@ -15,11 +15,9 @@ public class ScoreController {
 
     private Random getRandom(){
         try {
-            Random random = SecureRandom.getInstanceStrong();
-            return random;
+            return SecureRandom.getInstanceStrong();
         } catch (NoSuchAlgorithmException e) {
-            Random random = new Random();
-            return random;
+            return new Random();
         }
     }
     public int generateScore() {

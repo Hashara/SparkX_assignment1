@@ -12,6 +12,7 @@ public class TeamController {
             team.setBallCount(0);
             if (team.getOverCount() == Configs.OVERS_PER_GAME - 1) {
                 team.setStatus(Configs.TEAM_FINISHED);
+                System.out.println("team finished");
             } else {
                 team.setOverCount(team.getOverCount() + 1);
             }
@@ -44,7 +45,7 @@ public class TeamController {
     public void getSummary(Team team){
         System.out.println("=========================================");
         System.out.println(team.getTeamName());
-        System.out.println(team.getScore());
+        System.out.println("Score: " + team.getScore());
         System.out.println("=========================================");
 
         PlayerController playerController = new PlayerController();

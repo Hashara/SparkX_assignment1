@@ -33,14 +33,17 @@ public class RunGame {
         while (true) {
             String s = scanner.next();
 
-            if (currentGame.getGameStatus().equals(Configs.GAME_ONGOING)) {
-                if (s.equals("p")) {
-                    gameController.play(currentGame);
-                } else {
-                    System.out.println("Enter p to play");
-                }
-            } else if (currentGame.getGameStatus().equals(Configs.GAME_FINISHED)) {
+            if (currentGame.getGameStatus().equals(Configs.GAME_FINISHED)) {
                 break;
+            }
+            if (s.equals("p")) {
+                if (currentGame.getGameStatus().equals(Configs.GAME_ONGOING)) {
+                    gameController.play(currentGame);
+                } else if (currentGame.getGameStatus().equals(Configs.GAME_FINISHED)) {
+                    break;
+                }
+            } else {
+                System.out.println("Enter p to play");
             }
         }
 

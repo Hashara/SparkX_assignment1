@@ -26,7 +26,7 @@ public class GameController {
     }
 
     public void getSummary(Game game){
-        System.out.println("Toss won by: " + game.getToss() );
+        System.out.println("Toss won by: " + game.getToss().getTeamName() );
 
         List<Team> teamList = getWinner(game);
 
@@ -42,7 +42,7 @@ public class GameController {
     private List<Team> getWinner(Game game){
         List<Team> teams = new ArrayList<>();
         if (game.getTeam1().getScore() > game.getTeam2().getScore()){
-            System.out.println("Won by" + game.getTeam1().getTeamName() );
+            System.out.println("Won by: " + game.getTeam1().getTeamName() );
             teams.add(game.getTeam1());
             teams.add(game.getTeam2());
         }
@@ -52,7 +52,7 @@ public class GameController {
             teams.add(game.getTeam2());
         }
         else {
-            System.out.println("Won by" + game.getTeam2().getTeamName() );
+            System.out.println("Won by: " + game.getTeam2().getTeamName() );
             teams.add(game.getTeam2());
             teams.add(game.getTeam1());
         }
