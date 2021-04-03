@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class RunGame {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Game started..............");
@@ -43,6 +43,8 @@ public class RunGame {
                 break;
             }
         }
+
+        gameController.getSummary(currentGame);
 
         System.out.println("Game finished");
     }

@@ -14,9 +14,10 @@ public class Game {
     private String gameStatus;
 
 
-    public Game(String team1, String team2) throws Exception {
+    public Game(String team1, String team2) throws IllegalArgumentException {
         if (team1.equals(team2)) {
-            throw new Exception("Team names should be unique");
+            throw new IllegalArgumentException("Team names should be unique");
+
         }
         this.team1 = new Team(team1);
         this.team2 = new Team(team2);

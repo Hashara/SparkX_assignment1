@@ -32,4 +32,8 @@ public class PlayerController {
         }
 
     }
+
+    public void getSummary(Player p){
+        System.out.println(p.getPlayerName()+"\t\t" + p.getScore() + "\t" + p.getStatus());
+    }
 }

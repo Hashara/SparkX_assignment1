@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.model.Game;
+import com.company.model.Player;
 import com.company.model.Team;
 import com.company.conf.Configs;
 
@@ -37,6 +38,20 @@ public class TeamController {
         } else {
             System.out.println(Configs.GAME_FINISHED);
             game.setGameStatus(Configs.GAME_FINISHED);
+        }
+    }
+
+    public void getSummary(Team team){
+        System.out.println("=========================================");
+        System.out.println(team.getTeamName());
+        System.out.println(team.getScore());
+        System.out.println("=========================================");
+
+        PlayerController playerController = new PlayerController();
+
+        for (Player p:
+             team.getPlayers()) {
+            playerController.getSummary(p);
         }
     }
 }
