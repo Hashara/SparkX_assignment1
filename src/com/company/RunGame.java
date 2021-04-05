@@ -28,20 +28,14 @@ public class RunGame {
 
         System.out.println(teams.get(0).getTeamName());
 
-        System.out.print("Enter p to play");
+        System.out.println("Enter p to play");
 
-        while (true) {
+        while (!Configs.GAME_FINISHED.equals(currentGame.getGameStatus())) {
             String s = scanner.next();
 
-            if (currentGame.getGameStatus().equals(Configs.GAME_FINISHED)) {
-                break;
-            }
             if (s.equals("p")) {
-                if (currentGame.getGameStatus().equals(Configs.GAME_ONGOING)) {
-                    gameController.play(currentGame);
-                } else if (currentGame.getGameStatus().equals(Configs.GAME_FINISHED)) {
-                    break;
-                }
+                gameController.play(currentGame);
+
             } else {
                 System.out.println("Enter p to play");
             }
@@ -49,6 +43,5 @@ public class RunGame {
 
         gameController.getSummary(currentGame);
 
-        System.out.println("Game finished");
     }
 }

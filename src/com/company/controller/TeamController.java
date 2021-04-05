@@ -8,17 +8,8 @@ import com.company.conf.Configs;
 public class TeamController {
 
     public void play(Team team, Game game) {
-        if (team.getBallCount() == Configs.BALLS_PER_OVER - 1) {
-            team.setBallCount(0);
-            if (team.getOverCount() == Configs.OVERS_PER_GAME - 1) {
-                team.setStatus(Configs.TEAM_FINISHED);
-                System.out.println("team finished");
-            } else {
-                team.setOverCount(team.getOverCount() + 1);
-            }
-        } else {
-            team.setBallCount(team.getBallCount() + 1);
-        }
+
+        updateBallsCount(team);
         PlayerController playerController = new PlayerController();
 
         if (team.getStatus().equals(Configs.TEAM_PLAYING)) {
@@ -39,6 +30,20 @@ public class TeamController {
         } else {
             System.out.println(Configs.GAME_FINISHED);
             game.setGameStatus(Configs.GAME_FINISHED);
+        }
+    }
+
+    private void updateBallsCount(Team team){
+        if (team.getBallCount() == Configs.BALLS_PER_OVER - 1) {
+            team.setBallCount(0);
+            if (team.getOverCount() == Configs.OVERS_PER_GAME - 1) {
+                team.setStatus(Configs.TEAM_FINISHED);
+                System.out.println(Configs.TEAM_FINISHED);
+            } else {
+                team.setOverCount(team.getOverCount() + 1);
+            }
+        } else {
+            team.setBallCount(team.getBallCount() + 1);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.company.controller;
 
+import com.company.conf.Configs;
 import com.company.model.Game;
 import com.company.model.Team;
 
@@ -22,7 +23,7 @@ public class GameController {
 
         TeamController teamController = new TeamController();
         teamController.play(game.getCurrentTeam(), game);
-
+        updateGameStatus(game);
     }
 
     public void getSummary(Game game){
@@ -42,7 +43,7 @@ public class GameController {
     private List<Team> getWinner(Game game){
         List<Team> teams = new ArrayList<>();
         if (game.getTeam1().getScore() > game.getTeam2().getScore()){
-            System.out.println("Won by: " + game.getTeam1().getTeamName() );
+            System.out.println("Game won by: " + game.getTeam1().getTeamName() );
             teams.add(game.getTeam1());
             teams.add(game.getTeam2());
         }
@@ -52,10 +53,18 @@ public class GameController {
             teams.add(game.getTeam2());
         }
         else {
-            System.out.println("Won by: " + game.getTeam2().getTeamName() );
+            System.out.println("Game won by: " + game.getTeam2().getTeamName() );
             teams.add(game.getTeam2());
             teams.add(game.getTeam1());
         }
         return teams;
+    }
+
+    private void updateGameStatus(Game game){
+        if (!game.getToss().equals(game.getCurrentTeam()) &&
+                game.getCurrentTeam().getScore() > game.getToss().getScore()){
+            System.out.println(Configs.GAME_FINISHED);
+            game.setGameStatus(Configs.GAME_FINISHED);
+        }
     }
 }
