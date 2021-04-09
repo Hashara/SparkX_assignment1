@@ -39,7 +39,7 @@ CREATE TABLE  procedure_history  (
    FOREIGN KEY ( procedure_type , procedure_subcode ) REFERENCES  procedure_detail  ( procedure_type ,  procedure_subcode )
 )
 
-======================= Queries for the question ===============================
+======================= Queries for the questions ===============================
 
 select * from procedure_detail
 where price > 150
