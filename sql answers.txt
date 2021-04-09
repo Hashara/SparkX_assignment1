@@ -1,0 +1,15 @@
+select * from procedure_detail
+where price > 150
+limit 100;
+
+select owner.owner_id, owner.name, owner.surname from pet join owner on pet.owner_id = owner.owner_id where kind = 'Parrot';
+
+select count(*),zip_code from owner group by zip_code;
+
+select distinct pet.pet_id from pet join procedure_history
+where  EXTRACT(YEAR_MONTH FROM date) = 201602;
+
+select sum(price) from procedure_history join procedure_detail
+join pet join owner
+where owner.zip_code = 49503
+and EXTRACT(MONTH FROM date) =3;
