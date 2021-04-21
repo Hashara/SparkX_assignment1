@@ -2,24 +2,25 @@ package com.company.controller;
 
 import com.company.model.Player;
 import com.company.conf.Configs;
+import com.company.model.Team;
 
 public class PlayerController {
 
-    public void play(Player p) {
+    public void play(Player p, Team team) {
         ScoreController scoreController = new ScoreController();
         int score = scoreController.generateScore();
-        System.out.print(p.getTeam().getOverCount() + 1 + "-" + (p.getTeam().getBallCount() + 1) + " ");
+        System.out.print(team.getOverCount() + 1 + "-" + (team.getBallCount() + 1) + " ");
 
-        System.out.println(p.getTeam().getTeamName() + " " + p.getTeam().getScore()
+        System.out.println(team.getTeamName() + " " + team.getScore()
                 + " - " + p.getPlayerName() + " " + p.getScore());
 
         if (score < 0) {
             String outMode = scoreController.outModesGenerator();
             p.setStatus(outMode);
-            if (p.getTeam().getCurrentPlayerIndex() < Configs.PLAYERS_PER_TEAM - 1) {
-                p.getTeam().setCurrentPlayerIndex(p.getTeam().getCurrentPlayerIndex() + 1);
+            if (team.getCurrentPlayerIndex() < Configs.PLAYERS_PER_TEAM - 1) {
+                team.setCurrentPlayerIndex(team.getCurrentPlayerIndex() + 1);
             } else {
-                p.getTeam().setStatus(Configs.TEAM_FINISHED);
+                team.setStatus(Configs.TEAM_FINISHED);
                 System.out.println("team finished");
             }
             System.out.println(outMode);
@@ -31,7 +32,7 @@ public class PlayerController {
 
         }
 
-        System.out.println("new score :" + p.getTeam().getScore());
+        System.out.println("new score :" + team.getScore());
 
 
     }
