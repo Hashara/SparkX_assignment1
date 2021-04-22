@@ -11,16 +11,16 @@ public class TeamController {
 
         PlayerController playerController = new PlayerController();
 
-        if (team.getStatus().equals(Configs.TEAM_PLAYING)) {
+        if (team.getStatus().equals(Team.Status.TEAM_PLAYING)) {
             playerController.play(team.getPlayers().get(team.getCurrentPlayerIndex()), team);
 
         } else if (game.getToss().equals(team)) {
             if (team.equals(game.getTeam1())) {
-                game.getTeam2().setStatus(Configs.TEAM_PLAYING);
+                game.getTeam2().setStatus(Team.Status.TEAM_PLAYING);
                 game.setCurrentTeam(game.getTeam2());
 
             } else {
-                game.getTeam1().setStatus(Configs.TEAM_PLAYING);
+                game.getTeam1().setStatus(Team.Status.TEAM_PLAYING);
                 game.setCurrentTeam(game.getTeam1());
 
             }
@@ -37,8 +37,8 @@ public class TeamController {
         if (team.getBallCount() == Configs.BALLS_PER_OVER - 1) {
             team.setBallCount(0);
             if (team.getOverCount() == Configs.OVERS_PER_GAME - 1) {
-                team.setStatus(Configs.TEAM_FINISHED);
-                System.out.println(Configs.TEAM_FINISHED);
+                team.setStatus(Team.Status.TEAM_FINISHED);
+                System.out.println(Team.Status.TEAM_FINISHED);
             } else {
                 team.setOverCount(team.getOverCount() + 1);
             }

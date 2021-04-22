@@ -9,7 +9,9 @@ public class Team {
     private List<Player> players;
     private final String teamName;
     private int currentPlayerIndex;
-    private String status;
+
+    public enum Status { TEAM_PLAYING, TEAM_FINISHED }
+    private Status status;
 
     private int overCount;
     private int ballCount;
@@ -48,11 +50,11 @@ public class Team {
         return players.stream().mapToInt(o -> o.getScore()).sum();
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

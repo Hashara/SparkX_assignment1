@@ -20,14 +20,14 @@ public class PlayerController {
             if (team.getCurrentPlayerIndex() < Configs.PLAYERS_PER_TEAM - 1) {
                 team.setCurrentPlayerIndex(team.getCurrentPlayerIndex() + 1);
             } else {
-                team.setStatus(Configs.TEAM_FINISHED);
+                team.setStatus(Team.Status.TEAM_FINISHED);
                 System.out.println("team finished");
             }
             System.out.println(outMode);
         } else {
 
             p.addScore(score);
-            p.setStatus(Configs.TEAM_PLAYING);
+            p.setStatus(Configs.PLAYING);
             System.out.println(score);
 
         }
