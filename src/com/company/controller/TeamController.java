@@ -27,8 +27,8 @@ public class TeamController {
             playerController.play(game.getCurrentTeam().getPlayers().get(game.getCurrentTeam().getCurrentPlayerIndex()),game.getCurrentTeam());
 
         } else {
-            System.out.println(Configs.GAME_FINISHED);
-            game.setGameStatus(Configs.GAME_FINISHED);
+            System.out.println(Game.Status.FINISHED);
+            game.setGameStatus(Game.Status.FINISHED);
         }
         updateBallsCount(game.getCurrentTeam());
     }

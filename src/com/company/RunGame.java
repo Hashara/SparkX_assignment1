@@ -3,7 +3,6 @@ package com.company;
 import com.company.controller.GameController;
 import com.company.model.Game;
 import com.company.model.Team;
-import com.company.conf.Configs;
 
 import java.util.List;
 import java.util.Scanner;
@@ -30,7 +29,7 @@ public class RunGame {
 
         System.out.println("Enter p to play");
 
-        while (!Configs.GAME_FINISHED.equals(currentGame.getGameStatus())) {
+        while (!Game.Status.FINISHED.equals(currentGame.getGameStatus())) {
             String s = scanner.next();
 
             if (s.equals("p")) {

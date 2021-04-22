@@ -14,8 +14,5 @@ public final class Configs {
     public static final int BALLS_PER_OVER = 3;
     public static final String TEAM_PLAYING = "Playing";
     public static final String TEAM_FINISHED = "team finished";
-    public static final String GAME_ONGOING = "ongoing";
-    public static final String GAME_FINISHED = "game finished";
-
 
 }

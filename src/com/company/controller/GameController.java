@@ -1,6 +1,5 @@
 package com.company.controller;
 
-import com.company.conf.Configs;
 import com.company.model.Game;
 import com.company.model.Team;
 
@@ -63,8 +62,8 @@ public class GameController {
     private void updateGameStatus(Game game){
         if (!game.getToss().equals(game.getCurrentTeam()) &&
                 game.getCurrentTeam().getScore() > game.getToss().getScore()){
-            System.out.println(Configs.GAME_FINISHED);
-            game.setGameStatus(Configs.GAME_FINISHED);
+            System.out.println(Game.Status.FINISHED);
+            game.setGameStatus(Game.Status.FINISHED);
         }
     }
 }
