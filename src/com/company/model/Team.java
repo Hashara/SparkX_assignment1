@@ -28,7 +28,7 @@ public class Team {
     private void createPlayers(String teamName) {
         this.players = new ArrayList<>();
         for (int i = 0; i < Configs.PLAYERS_PER_TEAM; i++) {
-            this.players.add(new Player( this,teamName + i));
+            this.players.add(new Player( teamName + i));
         }
     }
 

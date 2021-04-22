@@ -1,13 +1,11 @@
 package com.company.model;
 
 public class Player {
-    private Team team;
     private String playerName;
     private int score;
     private String status;
 
-    public Player(Team team, String playerName) {
-        this.team = team;
+    public Player( String playerName) {
         this.playerName = playerName;
         this.score = 0;
         this.status = "Available";
