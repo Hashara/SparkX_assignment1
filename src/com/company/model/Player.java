@@ -13,9 +13,6 @@ public class Player {
         this.status = "Available";
     }
 
-    public Team getTeam() {
-        return team;
-    }
 
     public String getPlayerName() {
         return playerName;

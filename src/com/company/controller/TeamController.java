@@ -9,13 +9,12 @@ public class TeamController {
 
     public void play(Team team, Game game) {
 
-        updateBallsCount(team);
         PlayerController playerController = new PlayerController();
 
         if (team.getStatus().equals(Configs.TEAM_PLAYING)) {
-            playerController.play(team.getPlayers().get(team.getCurrentPlayerIndex()));
+            playerController.play(team.getPlayers().get(team.getCurrentPlayerIndex()), team);
 
-        } else if (team.equals(game.getToss())) {
+        } else if (game.getToss().equals(team)) {
             if (team.equals(game.getTeam1())) {
                 game.getTeam2().setStatus(Configs.TEAM_PLAYING);
                 game.setCurrentTeam(game.getTeam2());
@@ -25,12 +24,13 @@ public class TeamController {
                 game.setCurrentTeam(game.getTeam1());
 
             }
-            playerController.play(game.getCurrentTeam().getPlayers().get(game.getCurrentTeam().getCurrentPlayerIndex()));
+            playerController.play(game.getCurrentTeam().getPlayers().get(game.getCurrentTeam().getCurrentPlayerIndex()),game.getCurrentTeam());
 
         } else {
             System.out.println(Configs.GAME_FINISHED);
             game.setGameStatus(Configs.GAME_FINISHED);
         }
+        updateBallsCount(game.getCurrentTeam());
     }
 
     private void updateBallsCount(Team team){
