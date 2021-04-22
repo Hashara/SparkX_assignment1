@@ -10,7 +10,6 @@ public class Team {
     private final String teamName;
     private int currentPlayerIndex;
     private String status;
-    private int score;
 
     private int overCount;
     private int ballCount;
@@ -46,11 +45,7 @@ public class Team {
     }
 
     public int getScore() {
-        return score;
-    }
-
-    public void addScore(int score) {
-        this.score += score;
+        return players.stream().mapToInt(o -> o.getScore()).sum();
     }
 
     public String getStatus() {

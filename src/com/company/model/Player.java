@@ -32,6 +32,5 @@ public class Player {
 
     public void addScore(int score) {
         this.score += score;
-        this.team.addScore(score);
     }
 }
