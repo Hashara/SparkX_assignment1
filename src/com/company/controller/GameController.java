@@ -5,18 +5,43 @@ import com.company.model.Team;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class GameController {
 
-    public Game createGame(String team1, String team2) throws IllegalArgumentException {
-        return new Game(team1, team2);
+    public void startGame(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Game started..............");
+        System.out.print("Enter team 1 name: ");
+        String team1 = scanner.next();
+        System.out.print("Enter team 2 name: ");
+        String team2 = scanner.next();
 
-    }
+        Game currentGame = new Game(team1, team2);
 
-    public List<Team> selectRandomTeam(Game game)  {
+        System.out.print("Toss won by : ");
         Util util = new Util();
-        return util.selectRandomTeam(game);
+        List<Team> teams = util.selectRandomTeam(currentGame);
+
+        System.out.println(teams.get(0).getTeamName());
+
+        System.out.println("Enter p to play");
+
+        while (!Game.Status.FINISHED.equals(currentGame.getGameStatus())) {
+            String s = scanner.next();
+
+            if (s.equals("p")) {
+                this.play(currentGame);
+
+            } else {
+                System.out.println("Enter p to play");
+            }
+        }
+
+        this.getSummary(currentGame);
+
     }
+
 
     public void play(Game game) {
 
