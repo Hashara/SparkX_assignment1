@@ -14,8 +14,8 @@ public class GameController {
     }
 
     public List<Team> selectRandomTeam(Game game)  {
-        ScoreController scoreController = new ScoreController();
-        return scoreController.selectRandomTeam(game);
+        Util util = new Util();
+        return util.selectRandomTeam(game);
     }
 
     public void play(Game game) {
