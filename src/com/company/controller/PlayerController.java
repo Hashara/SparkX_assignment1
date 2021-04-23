@@ -7,27 +7,27 @@ import com.company.model.Team;
 public class PlayerController {
 
     public void play(Player p, Team team) {
-        ScoreController scoreController = new ScoreController();
-        int score = scoreController.generateScore();
+        Util util = new Util();
+        int score = util.generateScore();
         System.out.print(team.getOverCount() + 1 + "-" + (team.getBallCount() + 1) + " ");
 
         System.out.println(team.getTeamName() + " " + team.getScore()
                 + " - " + p.getPlayerName() + " " + p.getScore());
 
         if (score < 0) {
-            String outMode = scoreController.outModesGenerator();
+            String outMode = util.outModesGenerator();
             p.setStatus(outMode);
             if (team.getCurrentPlayerIndex() < Configs.PLAYERS_PER_TEAM - 1) {
                 team.setCurrentPlayerIndex(team.getCurrentPlayerIndex() + 1);
             } else {
-                team.setStatus(Configs.TEAM_FINISHED);
-                System.out.println("team finished");
+                team.setStatus(Team.Status.TEAM_FINISHED);
+                System.out.println(Team.Status.TEAM_FINISHED);
             }
             System.out.println(outMode);
         } else {
 
             p.addScore(score);
-            p.setStatus(Configs.TEAM_PLAYING);
+            p.setStatus("Playing");
             System.out.println(score);
 
         }

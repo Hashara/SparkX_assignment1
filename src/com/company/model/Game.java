@@ -1,7 +1,5 @@
 package com.company.model;
 
-import com.company.conf.Configs;
-
 public class Game {
 
     private Team team1;
@@ -11,7 +9,8 @@ public class Game {
 
     private Team currentTeam;
 
-    private String gameStatus;
+    public enum Status { ONGOING, FINISHED }
+    private Status status;
 
 
     public Game(String team1, String team2) throws IllegalArgumentException {
@@ -21,7 +20,7 @@ public class Game {
         }
         this.team1 = new Team(team1);
         this.team2 = new Team(team2);
-        this.gameStatus = Configs.GAME_ONGOING;
+        this.status = Status.ONGOING;
     }
 
     public Team getTeam1() {
@@ -40,12 +39,12 @@ public class Game {
         this.toss = toss;
     }
 
-    public String getGameStatus() {
-        return gameStatus;
+    public Status getGameStatus() {
+        return status;
     }
 
-    public void setGameStatus(String gameStatus) {
-        this.gameStatus = gameStatus;
+    public void setGameStatus(Status status) {
+        this.status = status;
     }
 
     public Team getCurrentTeam() {

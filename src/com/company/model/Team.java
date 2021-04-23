@@ -9,8 +9,9 @@ public class Team {
     private List<Player> players;
     private final String teamName;
     private int currentPlayerIndex;
-    private String status;
-    private int score;
+
+    public enum Status { TEAM_PLAYING, TEAM_FINISHED }
+    private Status status;
 
     private int overCount;
     private int ballCount;
@@ -29,7 +30,7 @@ public class Team {
     private void createPlayers(String teamName) {
         this.players = new ArrayList<>();
         for (int i = 0; i < Configs.PLAYERS_PER_TEAM; i++) {
-            this.players.add(new Player( this,teamName + i));
+            this.players.add(new Player( teamName + i));
         }
     }
 
@@ -46,18 +47,14 @@ public class Team {
     }
 
     public int getScore() {
-        return score;
+        return players.stream().mapToInt(o -> o.getScore()).sum();
     }
 
-    public void addScore(int score) {
-        this.score += score;
-    }
-
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

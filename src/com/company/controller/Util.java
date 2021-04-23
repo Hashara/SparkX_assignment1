@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class ScoreController {
+public class Util {
 
     private Random getRandom(){
         try {
@@ -42,12 +42,12 @@ public class ScoreController {
             game.setToss(game.getTeam1());
             game.setCurrentTeam(game.getTeam1());
             teams.add(game.getTeam1());
-            game.getTeam1().setStatus(Configs.TEAM_PLAYING);
+            game.getTeam1().setStatus(Team.Status.TEAM_PLAYING);
             teams.add(game.getTeam2());
         } else {
             game.setToss(game.getTeam2());
             game.setCurrentTeam(game.getTeam2());
-            game.getTeam2().setStatus(Configs.TEAM_PLAYING);
+            game.getTeam2().setStatus(Team.Status.TEAM_PLAYING);
             teams.add(game.getTeam2());
             teams.add(game.getTeam1());
         }
