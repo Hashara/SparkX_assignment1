@@ -21,13 +21,13 @@ public class PlayerController {
                 team.setCurrentPlayerIndex(team.getCurrentPlayerIndex() + 1);
             } else {
                 team.setStatus(Team.Status.TEAM_FINISHED);
-                System.out.println("team finished");
+                System.out.println(Team.Status.TEAM_FINISHED);
             }
             System.out.println(outMode);
         } else {
 
             p.addScore(score);
-            p.setStatus(Configs.PLAYING);
+            p.setStatus("Playing");
             System.out.println(score);
 
         }
