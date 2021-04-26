@@ -18,4 +18,4 @@ The source code inside the `src/com/company` folder
 
 ## SQL Assignment
 
-The answers in the `SQLassignment.sql` file
+The inset queries and the answer queries`SQLassignment.sql` file
