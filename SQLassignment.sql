@@ -51,7 +51,7 @@ select count(*),zip_code from owner group by zip_code;
 select distinct pet.pet_id from pet join procedure_history
 where  EXTRACT(YEAR_MONTH FROM date) = 201602;
 
-select COUNT(price) from procedure_history join procedure_detail
+select SUM(price) from procedure_history join procedure_detail
 on procedure_history.procedure_subcode = procedure_detail.procedure_subcode
 join pet
 on procedure_history.pet_id = pet.pet_id
