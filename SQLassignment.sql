@@ -42,8 +42,7 @@ CREATE TABLE  procedure_history  (
 ======================= Queries for the questions ===============================
 
 select * from procedure_detail
-where price > 150
-limit 100;
+where price > 150;
 
 select owner.owner_id, owner.name, owner.surname from pet join owner on pet.owner_id = owner.owner_id where kind = 'Parrot';
 
@@ -52,7 +51,11 @@ select count(*),zip_code from owner group by zip_code;
 select distinct pet.pet_id from pet join procedure_history
 where  EXTRACT(YEAR_MONTH FROM date) = 201602;
 
-select sum(price) from procedure_history join procedure_detail
-join pet join owner
+select COUNT(price) from procedure_history join procedure_detail
+on procedure_history.procedure_subcode = procedure_detail.procedure_subcode
+join pet
+on procedure_history.pet_id = pet.pet_id
+join owner
+on pet.owner_id = owner.owner_id
 where owner.zip_code = 49503
-and EXTRACT(MONTH FROM date) =3;
+and EXTRACT(MONTH FROM date) =3
